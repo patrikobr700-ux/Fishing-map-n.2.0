@@ -1,0 +1,135 @@
+[
+  {
+    "id": 1,
+    "name": "Labe 24 – Hřensko",
+    "lat": 50.8731,
+    "lng": 14.2405,
+    "fish": ["Parma", "Kapr", "Pstruh obecný"],
+    "type": "Údolní řeka",
+    "note": "Silný tah, nejlepší kolem kamenů pod mostem.",
+    "image": "img/labe24.jpg"
+  },
+  {
+    "id": 2,
+    "name": "ÚN Nechranice – hráz",
+    "lat": 50.3757,
+    "lng": 13.4412,
+    "fish": ["Candrát", "Okoun", "Kapr"],
+    "type": "Přehrada",
+    "note": "Výborné místo na candáta za soumraku.",
+    "image": "img/nechranice.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Vltava 7 – Český Krumlov",
+    "lat": 48.8117,
+    "lng": 14.3153,
+    "fish": ["Pstruh duhový", "Lipán", "Jelec"],
+    "type": "Lososová voda",
+    "note": "Tekoucí voda, ideální na mušku.",
+    "image": "img/vltava7.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Pálava – Nové Mlýny horní nádrž",
+    "lat": 48.8832,
+    "lng": 16.6579,
+    "fish": ["Amur", "Kapr", "Candrát", "Sumec"],
+    "type": "Přehrada",
+    "note": "Těžká voda, ale trofejní kapři.",
+    "image": "img/novemlyny.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Svratka 5 – Veverská Bítýška",
+    "lat": 49.2483,
+    "lng": 16.4429,
+    "fish": ["Lipán", "Pstruh", "Jelec tloušť"],
+    "type": "Řeka",
+    "note": "Čistá voda, nejlepší je vracák pod lávkou.",
+    "image": "img/svratka5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Bečva 1 – Přerov",
+    "lat": 49.4552,
+    "lng": 17.4503,
+    "fish": ["Parma", "Podoustev", "Kapr"],
+    "type": "Řeka",
+    "note": "Super místo u starého jezu.",
+    "image": "img/becva1.jpg"
+  },
+  {
+    "id": 7,
+    "name": "ÚN Orlík – Kožlí",
+    "lat": 49.5112,
+    "lng": 14.1847,
+    "fish": ["Sumec", "Candrát", "Okoun"],
+    "type": "Přehrada",
+    "note": "Noční lov sumců doporučen.",
+    "image": "img/orlik.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Lužnice – Planá nad Lužnicí",
+    "lat": 49.3915,
+    "lng": 14.7091,
+    "fish": ["Kapr", "Jelec", "Štika"],
+    "type": "Řeka",
+    "note": "Klidné rozlivy, výborné na boloňku.",
+    "image": "img/luznice.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Morava – Otrokovice",
+    "lat": 49.2109,
+    "lng": 17.5421,
+    "fish": ["Štika", "Okoun", "Sumec"],
+    "type": "Řeka",
+    "note": "Úsek u kolonek je nejlepší na přívlač.",
+    "image": "img/morava.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Dyje 5 – Břeclav",
+    "lat": 48.7585,
+    "lng": 16.8862,
+    "fish": ["Candrát", "Úhoř", "Kapr"],
+    "type": "Řeka",
+    "note": "Teplejší voda, časté úlovky candátů.",
+    "image": "img/dyje5.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Jizera – Turnov",
+    "lat": 50.5851,
+    "lng": 15.1576,
+    "fish": ["Pstruh", "Lipán", "Parma"],
+    "type": "Řeka",
+    "note": "Perfektní rovné proudy na nymfu.",
+    "image": "img/jizera.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Berounka – Černošice",
+    "lat": 49.9615,
+    "lng": 14.3182,
+    "fish": ["Kapr", "Štika", "Jelec"],
+    "type": "Řeka",
+    "note": "Rozlité tůně jsou top na feedrování.",
+    "image": "img/berounka.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Slezská Harta",
+    "lat": 49.9121,
+    "lng": 17.5388,
+    "fish": ["Candrát", "Okoun", "Sumec"],
+    "type": "Přehrada",
+    "note": "Jeden z nejlepších revírů na okouny.",
+    "image": "img/harta.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Lipno – Černá v Pošumaví",
+    "lat": 48.
