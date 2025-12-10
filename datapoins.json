@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Přehrada Lipno – Černá v Pošumaví",
+    "lat": 48.72865,
+    "lon": 14.16492,
+    "description": "Jedna z nejlepších lokalit na candáta a štiku.",
+    "fish": ["candát", "štika", "okoun"],
+    "bait": ["guma", "wobbler", "hlavní přívlač"],
+    "type": "přehrada",
+    "difficulty": "střední"
+  },
+  {
+    "id": 2,
+    "name": "Přehrada Orlík – Podskalí",
+    "lat": 49.51221,
+    "lon": 14.14132,
+    "description": "Výborné místo na sumce a kapry.",
+    "fish": ["sumec", "kapr", "cejn"],
+    "bait": ["peletky", "rybička", "ginger"],
+    "type": "přehrada",
+    "difficulty": "těžká"
+  },
+  {
+    "id": 3,
+    "name": "Labe – Hradec Králové – Jesíky",
+    "lat": 50.20763,
+    "lon": 15.83241,
+    "description": "Skvělé místo na tlouště a parmy.",
+    "fish": ["tloušť", "parma", "kapr"],
+    "bait": ["chleba", "červi", "rohlík"],
+    "type": "řeka",
+    "difficulty": "lehká"
+  },
+  {
+    "id": 4,
+    "name": "Dyje 7 – Nové Mlýny horní nádrž",
+    "lat": 48.90311,
+    "lon": 16.60144,
+    "description": "Známá lokalita na velké kapry a amury.",
+    "fish": ["kapr", "amur", "cejn"],
+    "bait": ["boilies", "kukuřice"],
+    "type": "přehrada",
+    "difficulty": "střední"
+  },
+  {
+    "id": 5,
+    "name": "Svratka – Brno Kníničky",
+    "lat": 49.24452,
+    "lon": 16.53071,
+    "description": "Úsek vhodný na okouny a štiky.",
+    "fish": ["okoun", "štika"],
+    "bait": ["guma", "rotačka"],
+    "type": "řeka",
+    "difficulty": "lehká"
+  },
+  {
+    "id": 6,
+    "name": "Berounka – Černošice",
+    "lat": 49.96022,
+    "lon": 14.33412,
+    "description": "Berounka zde nabízí krásné parmy a tlouště.",
+    "fish": ["parma", "tloušť", "lipan"],
+    "bait": ["červi", "těsto"],
+    "type": "řeka",
+    "difficulty": "střední"
+  },
+  {
+    "id": 7,
+    "name": "Jesenice u Chebu",
+    "lat": 50.09564,
+    "lon": 12.40211,
+    "description": "Místo známé velkými candáty.",
+    "fish": ["candát", "okoun"],
+    "bait": ["guma", "rybička"],
+    "type": "přehrada",
+    "difficulty": "těžká"
+  },
+  {
+    "id": 8,
+    "name": "Pískovna Mělice",
+    "lat": 50.03725,
+    "lon": 15.74091,
+    "description": "Jedna z nejčistších pískoven, výskyt velkých kaprů.",
+    "fish": ["kapr", "amur"],
+    "bait": ["boilies", "kukuřice"],
+    "type": "pískovna",
+    "difficulty": "lehká"
+  },
+  {
+    "id": 9,
+    "name": "Morava – Otrokovice",
+    "lat": 49.20842,
+    "lon": 17.54822,
+    "description": "Řeka zde nabízí sumce a štiky.",
+    "fish": ["sumec", "štika"],
+    "bait": ["rybička", "wobbler"],
+    "type": "řeka",
+    "difficulty": "střední"
+  },
+  {
+    "id": 10,
+    "name": "Vltava – Štěchovice",
+    "lat": 49.83612,
+    "lon": 14.40952,
+    "description": "Dobré mésto pro dravce.",
+    "fish": ["štika", "candát"],
+    "bait": ["přívlač", "guma"],
+    "type": "přehrada",
+    "
