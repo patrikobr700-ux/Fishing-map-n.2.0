@@ -4,16 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Manifest pro PWA -->
+  <!-- PWA manifest -->
   <link rel="manifest" href="manifest.webmanifest">
 
-  <title>Fishing Map</title>
+  <title>Fishing Map PWA</title>
 
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
+      background: #000;
     }
     #map {
       height: 100%;
@@ -21,7 +22,6 @@
     }
   </style>
 
-  <!-- Leaflet CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
@@ -31,42 +31,42 @@
 
   <script>
     // Inicializace mapy
-    const map = L.map('map').setView([49.297, 17.393], 12);
+    const map = L.map("map").setView([49.297, 17.393], 12);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
-      attribution: '&copy; OpenStreetMap'
+      attribution: "© OpenStreetMap"
     }).addTo(map);
 
-    // Načtení bodů z datapoints.json (správný název)
+    // ------------------------------------
+    // OPRAVENO: správné načtení JSON souboru
+    // ------------------------------------
     fetch("datapoints.json")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("datapoints.json nelze načíst");
-        }
-        return response.json();
+      .then(res => {
+        if (!res.ok) throw new Error("Soubor datapoints.json nebyl nalezen!");
+        return res.json();
       })
-      .then(points => {
-        points.forEach(p => {
+      .then(data => {
+        data.forEach(p => {
           L.marker([p.lat, p.lng])
             .addTo(map)
             .bindPopup(`<b>${p.name}</b><br>${p.desc}`);
         });
       })
       .catch(err => {
-        console.error("Chyba při načítání bodů:", err);
-        alert("Nepodařilo se načíst data z datapoints.json");
+        console.error("Chyba při načítání JSON:", err);
+        alert("Nepodařilo se načíst datapoints.json – zkontroluj název souboru.");
       });
   </script>
 
+  <!-- Service Worker -->
   <script>
-    // Registrace Service Workeru pro PWA
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("sw.js")
-        .then(() => console.log("Service Worker zaregistrován"))
-        .catch(err => console.error("Chyba SW:", err));
+      navigator.serviceWorker.register("sw.js")
+        .then(() => console.log("Service Worker registrován"))
+        .catch(err => console.error("SW chyba:", err));
     }
   </script>
+
 </body>
 </html>
