@@ -4,15 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Manifest pro PWA -->
   <link rel="manifest" href="manifest.webmanifest">
 
   <title>Fishing Map</title>
 
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; }
-    #map { height: 100%; width: 100%; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    #map {
+      height: 100%;
+      width: 100%;
+    }
   </style>
 
+  <!-- Leaflet CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
@@ -22,29 +31,42 @@
 
   <script>
     // Inicializace mapy
-    var map = L.map('map').setView([49.297, 17.393], 12);
+    const map = L.map('map').setView([49.297, 17.393], 12);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
+      attribution: '&copy; OpenStreetMap'
     }).addTo(map);
 
-    // Načtení bodů
+    // Načtení bodů z datapoints.json (správný název)
     fetch("datapoints.json")
-      .then(res => res.json())
-      .then(data => {
-        data.forEach(p => {
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("datapoints.json nelze načíst");
+        }
+        return response.json();
+      })
+      .then(points => {
+        points.forEach(p => {
           L.marker([p.lat, p.lng])
-           .addTo(map)
-           .bindPopup(`<b>${p.name}</b><br>${p.desc}`);
+            .addTo(map)
+            .bindPopup(`<b>${p.name}</b><br>${p.desc}`);
         });
+      })
+      .catch(err => {
+        console.error("Chyba při načítání bodů:", err);
+        alert("Nepodařilo se načíst data z datapoints.json");
       });
   </script>
 
   <script>
+    // Registrace Service Workeru pro PWA
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js");
+      navigator.serviceWorker
+        .register("sw.js")
+        .then(() => console.log("Service Worker zaregistrován"))
+        .catch(err => console.error("Chyba SW:", err));
     }
   </script>
 </body>
 </html>
-fetch("datapoints.json")
