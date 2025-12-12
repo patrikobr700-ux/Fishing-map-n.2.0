@@ -1,72 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- PWA manifest -->
-  <link rel="manifest" href="manifest.webmanifest">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fishing Map PWA</title>
-
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #000;
-    }
-    #map {
-      height: 100%;
-      width: 100%;
-    }
+    html,body,#map { height:100%; margin:0; padding:0; }
+    #map { width:100%; }
+    #msg { position:absolute; top:8px; left:8px; z-index:1000; background:#fff; padding:6px 8px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.2); font-family:Arial,Helvetica,sans-serif; }
   </style>
-
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
-
 <body>
+  <div id="msg">Načítám data…</div>
   <div id="map"></div>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    // Inicializace mapy
-    const map = L.map("map").setView([49.297, 17.393], 12);
+    const map = L.map('map').setView([49.297, 17.393], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution: "© OpenStreetMap"
-    }).addTo(map);
+    function setMsg(t) { const el = document.getElementById('msg'); if(el) el.textContent = t; }
 
-    // ------------------------------------
-    // OPRAVENO: správné načtení JSON souboru
-    // ------------------------------------
-    fetch("datapoints.json")
-      .then(res => {
-        if (!res.ok) throw new Error("Soubor datapoints.json nebyl nalezen!");
-        return res.json();
-      })
+    fetch('datapoints.json', {cache: 'no-store'})
+      .then(resp => { if(!resp.ok) throw new Error('HTTP ' + resp.status); return resp.json(); })
       .then(data => {
+        setMsg('Načteno ' + data.length + ' bodů. Klikněte na značku pro detail.');
         data.forEach(p => {
-          L.marker([p.lat, p.lng])
-            .addTo(map)
-            .bindPopup(`<b>${p.name}</b><br>${p.desc}`);
+          if(typeof p.lat !== 'number' || typeof p.lon !== 'number') return;
+          const marker = L.marker([p.lat, p.lon]).addTo(map);
+          const species = Array.isArray(p.species) ? p.species.join(', ') : p.species;
+          const popup = '<b>' + p.name + '</b><br/><b>Hloubka:</b> ' + p.depth + ' m<br/><b>Druhy:</b> ' + species + '<br/><div style="margin-top:6px;font-size:12px;color:#555">' + (p.notes||'') + '</div>';
+          marker.bindPopup(popup);
         });
+        setTimeout(()=> setMsg(''), 3500);
       })
-      .catch(err => {
-        console.error("Chyba při načítání JSON:", err);
-        alert("Nepodařilo se načíst datapoints.json – zkontroluj název souboru.");
-      });
-  </script>
+      .catch(err => { console.error('Chyba načtení datapoints.json', err); setMsg('Nepodařilo se načíst datapoints.json — zkontroluj, zda soubor existuje a je v rootu repozitáře.'); });
 
-  <!-- Service Worker -->
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js")
-        .then(() => console.log("Service Worker registrován"))
-        .catch(err => console.error("SW chyba:", err));
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(()=> console.log('SW registrován')).catch(err=>console.warn('SW error',err));
     }
   </script>
-
 </body>
 </html>
